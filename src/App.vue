@@ -1,32 +1,51 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<v-app>
+		<v-main class="grey lighten-4">
+			<nav-bar></nav-bar>
+			
+			<router-view :authUser="authUser"/>
+			<footer-comp></footer-comp>
+		</v-main>
+	</v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { auth } from './firebase/firebase.js'
 
-#nav {
-  padding: 30px;
-}
+import NavBar from '@/components/NavBar.vue'
+import FooterComp from './components/FooterComp.vue'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+	name: 'App',
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+	data() {
+		return {
+			authUser: { uid: '' },
+		}
+	},
+
+	components: {
+		NavBar,
+		FooterComp,
+	},
+	methods: {},
+
+	created() {
+		auth.onAuthStateChanged(user => {
+			if (user) {
+				console.log('Works', user)
+				this.authUser = user
+			} else {
+				console.log('logged out.')
+				this.authUser = { uid: '' }
+			}
+
+			// check if logged in
+			// if(this.authUser.uid){}
+			// v-if="authUser.uid"
+		})
+	},
 }
-</style>
+</script>
+
+<style scoped></style>

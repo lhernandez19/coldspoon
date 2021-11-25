@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="view">
+		<h1>Home Page</h1>
+		<flavor-of-the-week></flavor-of-the-week>
+		<vote></vote>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import FlavorOfTheWeek from '@/components/FlavorOfTheWeek.vue'
+import Vote from '../components/Vote.vue'
+import { db } from '../firebase/firebase.js'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+	name: 'Home',
+
+	components: {
+		FlavorOfTheWeek,
+		Vote,
+	},
+
+	props: {
+		votes: {
+			type: Array,
+		},
+	},
+
+	data() {
+		return {
+			vote: [],
+		}
+	},
+
+	firestore: {
+		vote: db.collection('Vote'),
+	},
 }
 </script>
+
+<style scoped>
+.view {
+	min-height: 80vh;
+}
+</style>
