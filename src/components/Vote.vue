@@ -1,11 +1,14 @@
 <template>
-	<v-container>
-		<vote-product
-			:item="item"
-			v-for="item in products"
-			:key="item.id"
-		></vote-product>
-	</v-container>
+	<div class="container d-flex flex-wrap justify-content-start">
+
+			<vote-product
+				:item="item"
+				v-for="item in products"
+				:key="item.id"
+				:justify="item"
+			></vote-product>
+
+	</div>
 </template>
 
 <script>

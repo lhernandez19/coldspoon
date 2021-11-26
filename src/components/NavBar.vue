@@ -23,6 +23,7 @@
 
 			<v-spacer></v-spacer>
 
+			<v-btn class="mr-2" to="/"><v-icon>mdi-home</v-icon></v-btn>
 			<v-btn class="mr-2" to="/store"><v-icon>mdi-store</v-icon></v-btn>
 			<v-btn class="mr-2" to="/login"><v-icon>mdi-account</v-icon></v-btn>
 			<v-btn class="mr-2" to="/register"

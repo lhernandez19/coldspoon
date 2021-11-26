@@ -2,7 +2,6 @@
 	<v-app>
 		<v-main class="grey lighten-4">
 			<nav-bar></nav-bar>
-			
 			<router-view :authUser="authUser"/>
 			<footer-comp></footer-comp>
 		</v-main>

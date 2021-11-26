@@ -1,33 +1,26 @@
 <template>
-    <div>
-        <test></test>
-    </div>
+	<v-container>
+		<checkout-comp></checkout-comp>
+	</v-container>
 </template>
 
 <script>
-import Test from '@/components/Test';
+import CheckoutComp from '../components/CheckoutComp.vue'
+
 export default {
-    name: 'ColdspoonCheckout',
-    components: {
-        Test,
-    },
+	name: 'Checkout',
+	components: {
+		CheckoutComp,
+	},
 
-    data() {
-        return {
-            
-        };
-    },
+	data() {
+		return {}
+	},
 
-    mounted() {
-        
-    },
+	mounted() {},
 
-    methods: {
-        
-    },
-};
+	methods: {},
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -1,33 +1,25 @@
 <template>
 	<div>
-		<v-container>
-			<v-card class="m-2 p-2">
-				<v-row>
-					<v-col cols="6" class="px-5">
-						<v-img
-							height="250"
-							src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-						></v-img>
-					</v-col>
-					<v-col cols="6" class="px-5">
-						<h2 class="my-4">Flavor of the week</h2>
-						<p class="my-4">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-							accusamus quisquam accusantium adipisci libero suscipit asperiores
-							facilis molestias esse, possimus praesentium, quasi aut nobis est
-							eos dolor perspiciatis? Fugit, iure.
-						</p>
-						<v-btn class="mt-2" rounded color="primary" dark> Shop Now </v-btn>
-					</v-col>
-				</v-row>
-			</v-card>
+		<v-container fluid class="bgHero">
+			<v-row justify="center">
+				<v-col cols="6" class="text-center">
+					<h1 class="mt-5">COLD SPOON GELATO TOSA</h1>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+						Reprehenderit aliquid quis quod voluptates veritatis. Non veritatis
+						ullam est exercitationem ipsam doloremque eos alias harum, dolores a
+						voluptate provident debitis laborum!
+					</p>
+					<v-btn>Shop Now</v-btn>
+				</v-col>
+			</v-row>
 		</v-container>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'ColdspoonFlavoroftheweek',
+	name: 'FlavorOfTheWeek',
 
 	data() {
 		return {}
@@ -39,4 +31,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.bgHero {
+	background-image: url(../assets/ChristmasGelato.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: scroll;
+	height: 80vh;
+	color: white;
+}
+</style>

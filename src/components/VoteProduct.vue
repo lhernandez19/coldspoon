@@ -1,11 +1,13 @@
 <template>
-	<div>
-		<v-card elevation="2">
-			<v-card-title>{{ item.name }}</v-card-title>
-			<v-card-text>$ {{ item.description }}</v-card-text>
-			<v-btn @click.prevent="voteCount"> Vote </v-btn>
-		</v-card>
-	</div>
+	<v-container>
+		<v-row>
+			<v-col cols="4">
+				<h2>{{ item.name }}</h2>
+				<p>$ {{ item.description }}</p>
+				<v-btn @click.prevent="voteCount"> Vote </v-btn>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
