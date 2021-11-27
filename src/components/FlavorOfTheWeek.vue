@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-container fluid class="bgHero">
+		<v-container class="bgHero">
 			<v-row justify="center">
 				<v-col cols="6" class="text-center">
 					<h1 class="mt-5">COLD SPOON GELATO TOSA</h1>

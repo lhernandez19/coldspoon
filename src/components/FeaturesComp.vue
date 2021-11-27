@@ -1,40 +1,48 @@
 <template>
 	<div>
-		<v-container fluid>
-			<v-container elevation="2">
-				<v-row class="features">
-					<v-col>
-						<v-icon>mdi-truck</v-icon>
-						<h3>Free Shipping</h3>
-						<p>Above $25 only</p>
-					</v-col>
-					<v-col>
-						<v-icon>mdi-truck</v-icon>
-						<h3>Certified organic</h3>
-						<p>Guarantee</p>
-					</v-col>
-					<v-col>
-						<v-icon>mdi-truck</v-icon>
-						<h3>Buy More, Save More</h3>
-						<p>Low prices</p>
-					</v-col>
-					<v-col>
-						<v-icon>mdi-truck</v-icon>
-						<h3>Catering</h3>
-						<p>Best in town</p>
-					</v-col>
-				</v-row>
-			</v-container>
+		<v-container class="my-5">
+			<v-row class="features">
+				<v-list-item>
+					<v-list-item-content v-for="item in features" :key="item">
+						<v-icon class="mb-2">{{ item.icon }}</v-icon>
+						<h3 class="mb-1">{{ item.title }}</h3>
+						<p>{{ item.description }}</p>
+					</v-list-item-content>
+				</v-list-item>
+			</v-row>
 		</v-container>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'ColdspoonFeaturescomp',
+	name: 'Featurescomp',
 
 	data() {
-		return {}
+		return {
+			features: [
+				{
+					icon: 'mdi-truck',
+					title: 'Free Shipping',
+					description: 'Above $25 only',
+				},
+				{
+					icon: 'mdi-sprout',
+					title: 'Certified organic',
+					description: 'Guarantee',
+				},
+				{
+					icon: 'mdi-cash',
+					title: 'Buy More, Save More',
+					description: 'Low prices',
+				},
+				{
+					icon: 'mdi-silverware-fork-knife',
+					title: 'Catering',
+					description: 'Best in town',
+				},
+			],
+		}
 	},
 
 	mounted() {},
@@ -50,6 +58,6 @@ export default {
 	align-content: center;
 	text-align: center;
 	border-radius: 10px;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	box-shadow: 0px 2px 4px rgb(0 0 0 / 0.2);
 }
 </style>

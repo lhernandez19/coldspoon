@@ -10,7 +10,7 @@
 <script>
 import FlavorOfTheWeek from '@/components/FlavorOfTheWeek.vue'
 import Vote from '../components/Vote.vue'
-import { db } from '../firebase/firebase.js'
+// import { db } from '../firebase/firebase.js'
 import FeaturesComp from '../components/FeaturesComp.vue'
 
 export default {
@@ -22,21 +22,21 @@ export default {
 		FeaturesComp,
 	},
 
-	props: {
-		votes: {
-			type: Array,
-		},
-	},
+	// props: {
+	// 	votes: {
+	// 		type: Array,
+	// 	},
+	// },
 
-	data() {
-		return {
-			vote: [],
-		}
-	},
+	// data() {
+	// 	return {
+	// 		vote: [],
+	// 	}
+	// },
 
-	firestore: {
-		vote: db.collection('Vote'),
-	},
+	// firestore: {
+	// 	vote: db.collection('Vote'),
+	// },
 }
 </script>
 
