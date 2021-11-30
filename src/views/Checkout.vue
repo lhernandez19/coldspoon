@@ -1,5 +1,6 @@
 <template>
 	<v-container>
+
 		<checkout-comp></checkout-comp>
 	</v-container>
 </template>

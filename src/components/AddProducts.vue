@@ -37,8 +37,14 @@
 							label="Price"
 							required
 						></v-text-field>
+						<v-file-input
+							v-model="product.image"
+							label="Image"
+							prepend-icon="mdi-file-image-plus-outline"
+							required
+						></v-file-input>
 
-						<v-btn color="primary" class="mr-4" @click="addProduct">
+						<v-btn color="primary" class="mr-4" @click.prevent="addProduct">
 							Add Product
 						</v-btn>
 					</v-form>
@@ -49,7 +55,7 @@
 </template>
 
 <script>
-import {db} from '../firebase/firebase.js'
+import { db } from '../firebase/firebase.js'
 
 export default {
 	name: 'Addproducts',
@@ -64,6 +70,7 @@ export default {
 				quantity: '',
 				type: '',
 			},
+			productImage: {},
 		}
 	},
 

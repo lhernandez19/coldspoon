@@ -1,20 +1,23 @@
 <template>
 	<v-container>
-        <v-row> 
-            <checkout-item
-			:item="item" 
-			v-for="item in products"
-			:key="item.id"
-			elevation="2"
-		></checkout-item>
-        </v-row>
-        
-
+		<h1>Checkout</h1>
+		<v-list>
+			<checkout-item
+				:item="item"
+				v-for="item in products"
+				:key="item.id"
+				elevation="2"
+			></checkout-item>
+			<v-divider></v-divider>
+			<p>Subtotal</p>
+			<p>Sales taxes</p>
+			<h3>Total</h3>
+		</v-list>
 	</v-container>
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js' 
+import { db } from '../firebase/firebase.js'
 import CheckoutItem from './CheckoutItem.vue'
 
 export default {

@@ -1,10 +1,16 @@
 <template>
 	<div>
-		<v-card elevation="2">
-			<v-card-title>{{ item.name }}</v-card-title>
-			<v-card-text>$ {{ item.price }}</v-card-text>
-			<v-card-text>{{ item.quantity }}</v-card-text>
-			<v-btn @click.prevent="updateCart"> Add to Cart </v-btn>
+		<v-card class="mb-5" outlined max-width="250">
+			<v-img :src="item.image"></v-img>
+			<v-card-title> {{ item.name }}</v-card-title>
+			<v-card-subtitle>{{ item.price }}</v-card-subtitle>
+			<v-card-text>{{ item.description }}</v-card-text>
+			<v-divider class="mx-4"></v-divider>
+			<v-card-actions class="pl-4">
+				<v-btn :disabled="disableAddToCartBtn" @click.prevent="updateCart">
+					Add to Cart
+				</v-btn>
+			</v-card-actions>
 		</v-card>
 	</div>
 </template>
@@ -21,7 +27,15 @@ export default {
 		},
 	},
 
+	data() {
+		return {
+			disableAddToCartBtn: false,
+		}
+	},
+
 	methods: {
+		//store all the cart items
+		//attach the cart to a user
 		updateCart() {
 			db.collection('Cart')
 				.add({
@@ -31,6 +45,9 @@ export default {
 				.catch(error => {
 					console.log('Error adding recipe', error)
 					alert('ERROR!')
+				})
+				.finally(() => {
+					this.disableAddToCartBtn = true
 				})
 		},
 	},

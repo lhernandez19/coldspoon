@@ -1,9 +1,13 @@
 <template>
 	<v-card class="" outlined max-width="300">
-		<v-img src="../assets/Chocolate.jpg"></v-img>
-		<v-card-title>{{ item.name }}</v-card-title>
+		<v-img :src="item.image"></v-img>
+		<v-card-title> {{ item.name }}</v-card-title>
+		<v-card-subtitle>Votes: {{ item.votes }}</v-card-subtitle>
 		<v-card-text>{{ item.description }}</v-card-text>
-		<v-btn @click.prevent="voteCount"> Vote </v-btn>
+		<v-divider class="mx-4"></v-divider>
+		<v-card-actions class="pl-4">
+			<v-btn @click.prevent="voteCount"> Vote </v-btn>
+		</v-card-actions>
 	</v-card>
 </template>
 

@@ -33,12 +33,13 @@ export default {
 
 <style scoped>
 .bgHero {
-	background-image: url(../assets/ChristmasGelato.jpg);
+	background-image: url(../assets/homeHero.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 	background-attachment: scroll;
-	height: 80vh;
-	color: white;
+	height: 55vh;
+	color: grey;
+	border-radius: 10px;
 }
 </style>

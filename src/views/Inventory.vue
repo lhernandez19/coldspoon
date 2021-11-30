@@ -1,5 +1,6 @@
 <template>
 	<div>
+
 		<add-products></add-products>
 		<inventory-table></inventory-table>
 	</div>

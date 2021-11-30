@@ -1,6 +1,6 @@
 <template>
-	<v-container>
-		<v-row>
+	<v-container class="voteBg">
+		<v-row class="justify-space-around">
 			<product
 				:item="item"
 				v-for="item in products"
