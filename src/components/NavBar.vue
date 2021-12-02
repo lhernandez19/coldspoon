@@ -25,19 +25,26 @@
 
 			<v-btn class="mr-2" to="/"><v-icon>mdi-home</v-icon></v-btn>
 			<v-btn class="mr-2" to="/store"><v-icon>mdi-store</v-icon></v-btn>
-			<v-btn class="mr-2" to="/login"><v-icon>mdi-account</v-icon></v-btn>
-			<v-btn class="mr-2" to="/register"
-				><v-icon>mdi-account-arrow-right</v-icon></v-btn
-			>
 			<v-btn class="mr-2" to="/inventory"><v-icon>mdi-database</v-icon></v-btn>
 			<v-btn class="mr-2" to="/checkout"
 				><v-icon>mdi-cart </v-icon><span class="pl-3"></span>
 			</v-btn>
+			<v-btn v-if="authUser && authUser.uid" @click="logout"
+				><v-icon>mdi-logout</v-icon></v-btn
+			>
+			<template v-else
+				><v-btn class="mr-2" to="/register"
+					><v-icon>mdi-account-arrow-right</v-icon></v-btn
+				>
+				<v-btn class="mr-2" to="/login"><v-icon>mdi-account</v-icon></v-btn>
+			</template>
 		</v-app-bar>
 	</div>
 </template>
 
 <script>
+import { auth } from '../firebase/firebase.js'
+
 export default {
 	name: 'Navbar',
 
@@ -47,11 +54,19 @@ export default {
 		}
 	},
 
+	props: {
+		authUser: Object,
+	},
+
 	mounted() {},
 
 	methods: {
 		updateCart() {
 			this.cart += 1
+		},
+
+		logout() {
+			auth.signOut()
 		},
 	},
 }

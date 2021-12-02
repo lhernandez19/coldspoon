@@ -13,6 +13,10 @@
 			<p>Sales taxes</p>
 			<h3>Total</h3>
 		</v-list>
+
+		<ul v-for="cart in cartList" :key="cart.nane">
+			<li>{{cart.name}} | {{cart.price}}</li>
+		</ul>
 	</v-container>
 </template>
 
@@ -29,9 +33,15 @@ export default {
 		products: [],
 	}),
 
+	props: {
+		cartList: Array,
+	},
+
 	firestore: {
 		products: db.collection('Cart'),
 	},
+
+	methods: {},
 }
 </script>
 

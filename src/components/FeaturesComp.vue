@@ -3,7 +3,7 @@
 		<v-container class="my-5">
 			<v-row class="features">
 				<v-list-item>
-					<v-list-item-content v-for="item in features" :key="item">
+					<v-list-item-content v-for="item in features" :key="item.title">
 						<v-icon class="mb-2">{{ item.icon }}</v-icon>
 						<h3 class="mb-1">{{ item.title }}</h3>
 						<p>{{ item.description }}</p>

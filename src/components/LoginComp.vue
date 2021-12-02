@@ -1,5 +1,5 @@
 <template>
-	<v-container :align-self="align" class="mt-5">
+	<v-container  class="mt-5">
 		<v-row justify="center">
 			<v-col cols="6" class="white rounded-lg">
 				<v-form ref="form" class="ma-5 pa-5">
@@ -38,7 +38,7 @@ export default {
 		signInUser() {
 			auth.signInWithEmailAndPassword(this.email, this.password).then(
 				() => {
-					alert('Works')
+					this.$router.push('/')
 				},
 				err => {
 					alert(`Error - ${err.message}`)

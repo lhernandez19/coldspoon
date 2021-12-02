@@ -6,7 +6,7 @@
 				<side-bar></side-bar>
 			</v-col>
 			<v-col class="9">
-				<store-comp></store-comp>
+				<store-comp v-bind:add-product-method="addProduct"></store-comp>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -24,11 +24,12 @@ export default {
 
 	props: {
 		carts: Array,
+		cartList: Array,
+		addProductMethod: Function
 	},
 
 	data() {
 		return {
-			cart: [],
 		}
 	},
 

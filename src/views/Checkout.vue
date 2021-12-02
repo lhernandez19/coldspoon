@@ -1,7 +1,6 @@
 <template>
 	<v-container>
-
-		<checkout-comp></checkout-comp>
+		<checkout-comp :cartList="cartList"></checkout-comp>
 	</v-container>
 </template>
 
@@ -14,6 +13,10 @@ export default {
 		CheckoutComp,
 	},
 
+	props: {
+		cartList: Array,
+	},
+
 	data() {
 		return {}
 	},
@@ -24,4 +27,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped></style>

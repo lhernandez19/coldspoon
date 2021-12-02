@@ -1,8 +1,8 @@
 <template>
 	<v-app>
 		<v-main class="grey lighten-4">
-			<nav-bar></nav-bar>
-			<router-view :authUser="authUser"/>
+			<nav-bar :auth-user="authUser"></nav-bar>
+			<router-view :auth-user="authUser" :cartList="cartList" v-bind:add-product-method="addProduct" />
 			<footer-comp></footer-comp>
 		</v-main>
 	</v-app>
@@ -20,6 +20,10 @@ export default {
 	data() {
 		return {
 			authUser: { uid: '' },
+			cartList: [
+				{name: 'test', price: '9'},
+				{name: 'test', price: '9'}
+			],
 		}
 	},
 
@@ -27,7 +31,12 @@ export default {
 		NavBar,
 		FooterComp,
 	},
-	methods: {},
+
+	methods: {
+		addProduct(newProduct) {
+			this.cartList.push(newProduct)
+		},
+	},
 
 	created() {
 		auth.onAuthStateChanged(user => {
@@ -38,11 +47,22 @@ export default {
 				console.log('logged out.')
 				this.authUser = { uid: '' }
 			}
-
-			// check if logged in
-			// if(this.authUser.uid){}
-			// v-if="authUser.uid"
 		})
+	},
+
+	mounted: function () {
+		if (localStorage.getItem('cartList')) {
+			this.cartList = JSON.parse(localStorage.getItem('cartList'))
+		}
+	},
+
+	watch: {
+		cartList: {
+			handler(newList) {
+				localStorage.setItem('cartList', JSON.stringify(newList))
+			},
+			deep: true,
+		},
 	},
 }
 </script>

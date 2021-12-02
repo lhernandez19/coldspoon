@@ -5,6 +5,7 @@
 				:item="item"
 				v-for="item in products"
 				:key="item.id"
+				:add-product-method="addProduct"
 				elevation="2"
 			>
 			</product>
@@ -28,9 +29,14 @@ export default {
 		cart: [],
 	}),
 
+	props: {
+		addProductMethod: Function,
+	},
+
 	firestore: {
 		products: db.collection('gelatos'),
 		cart: db.collection('Cart'),
 	},
+
 }
 </script>

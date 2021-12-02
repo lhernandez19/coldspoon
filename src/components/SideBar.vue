@@ -2,6 +2,7 @@
   <v-card
     height="600"
     width="250"
+    outlined
   >
     <v-navigation-drawer permanent>
       <v-list-item>

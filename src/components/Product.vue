@@ -7,7 +7,7 @@
 			<v-card-text>{{ item.description }}</v-card-text>
 			<v-divider class="mx-4"></v-divider>
 			<v-card-actions class="pl-4">
-				<v-btn :disabled="disableAddToCartBtn" @click.prevent="updateCart">
+				<v-btn :disabled="disableAddToCartBtn"  @click="addProduct">
 					Add to Cart
 				</v-btn>
 			</v-card-actions>
@@ -22,19 +22,28 @@ export default {
 	name: 'Inventorytable',
 
 	props: {
-		item: {
-			type: Object,
-		},
+		item: Object,
+		addProductMethod: Function,
 	},
 
 	data() {
 		return {
 			disableAddToCartBtn: false,
+			newProduct: {
+				image: '',
+				name: '',
+				price: '',
+				description: '',
+			},
 		}
 	},
 
 	methods: {
 		//store all the cart items
+		addProduct() {
+			this.addProductMethod(this.newProduct)
+		},
+
 		//attach the cart to a user
 		updateCart() {
 			db.collection('Cart')

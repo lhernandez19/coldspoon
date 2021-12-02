@@ -10,7 +10,7 @@
 						ullam est exercitationem ipsam doloremque eos alias harum, dolores a
 						voluptate provident debitis laborum!
 					</p>
-					<v-btn>Shop Now</v-btn>
+					<v-btn class="mr-2" to="/store">Shop Now</v-btn>
 				</v-col>
 			</v-row>
 		</v-container>
