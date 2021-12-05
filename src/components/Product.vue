@@ -7,7 +7,7 @@
 			<v-card-text>{{ item.description }}</v-card-text>
 			<v-divider class="mx-4"></v-divider>
 			<v-card-actions class="pl-4">
-				<v-btn :disabled="disableAddToCartBtn"  @click="addProduct">
+				<v-btn :disabled="disableAddToCartBtn" @click="addProduct">
 					Add to Cart
 				</v-btn>
 			</v-card-actions>
@@ -16,10 +16,8 @@
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
-
 export default {
-	name: 'Inventorytable',
+	name: 'Product',
 
 	props: {
 		item: Object,
@@ -29,36 +27,31 @@ export default {
 	data() {
 		return {
 			disableAddToCartBtn: false,
-			newProduct: {
-				image: '',
-				name: '',
-				price: '',
-				description: '',
-			},
 		}
 	},
 
 	methods: {
 		//store all the cart items
 		addProduct() {
-			this.addProductMethod(this.newProduct)
+			this.addProductMethod(this.item)
+			this.disableAddToCartBtn = true
 		},
 
 		//attach the cart to a user
-		updateCart() {
-			db.collection('Cart')
-				.add({
-					name: this.item.name,
-					price: this.item.price,
-				})
-				.catch(error => {
-					console.log('Error adding recipe', error)
-					alert('ERROR!')
-				})
-				.finally(() => {
-					this.disableAddToCartBtn = true
-				})
-		},
+		// updateCart() {
+		// 	db.collection('Cart')
+		// 		.add({
+		// 			name: this.item.name,
+		// 			price: this.item.price,
+		// 		})
+		// 		.catch(error => {
+		// 			console.log('Error adding recipe', error)
+		// 			alert('ERROR!')
+		// 		})
+		// 		.finally(() => {
+		// 			this.disableAddToCartBtn = true
+		// 		})
+		// },
 	},
 }
 </script>

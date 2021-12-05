@@ -4,8 +4,9 @@
 		<v-list>
 			<checkout-item
 				:item="item"
-				v-for="item in products"
-				:key="item.id"
+				v-for="item in cartList"
+				:key="item.name"
+				:remove-product-method="removeProductMethod"
 				elevation="2"
 			></checkout-item>
 			<v-divider></v-divider>
@@ -13,10 +14,6 @@
 			<p>Sales taxes</p>
 			<h3>Total</h3>
 		</v-list>
-
-		<ul v-for="cart in cartList" :key="cart.nane">
-			<li>{{cart.name}} | {{cart.price}}</li>
-		</ul>
 	</v-container>
 </template>
 
@@ -35,6 +32,7 @@ export default {
 
 	props: {
 		cartList: Array,
+		removeProductMethod: Function,
 	},
 
 	firestore: {
@@ -45,4 +43,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

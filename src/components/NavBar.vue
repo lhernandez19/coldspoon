@@ -25,13 +25,17 @@
 
 			<v-btn class="mr-2" to="/"><v-icon>mdi-home</v-icon></v-btn>
 			<v-btn class="mr-2" to="/store"><v-icon>mdi-store</v-icon></v-btn>
-			<v-btn class="mr-2" to="/inventory"><v-icon>mdi-database</v-icon></v-btn>
+
 			<v-btn class="mr-2" to="/checkout"
 				><v-icon>mdi-cart </v-icon><span class="pl-3"></span>
 			</v-btn>
-			<v-btn v-if="authUser && authUser.uid" @click="logout"
-				><v-icon>mdi-logout</v-icon></v-btn
-			>
+			<template v-if="authUser && authUser.uid">
+				<v-btn class="mr-2" to="/inventory"
+					><v-icon>mdi-database</v-icon></v-btn
+				>
+				<v-btn @click="logout"><v-icon>mdi-logout</v-icon></v-btn>
+			</template>
+
 			<template v-else
 				><v-btn class="mr-2" to="/register"
 					><v-icon>mdi-account-arrow-right</v-icon></v-btn

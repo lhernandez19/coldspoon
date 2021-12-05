@@ -3,7 +3,7 @@
 		<v-list-item-group  active-class="pink--text" multiple>
 			<v-list-item>
 				<v-item-avatar>
-					<v-img src="../assets/logoCS.png" width="50"></v-img>
+					<v-img :src="item.image" width="50"></v-img>
 				</v-item-avatar>
 				<v-list-item-content>
 					<v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -50,15 +50,13 @@
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
 
 export default {
 	name: 'CheckoutItem',
 
 	props: {
-		item: {
-			type: Object,
-		},
+		item: Object,
+		removeProductMethod: Function,
 	},
 
 	data() {
@@ -69,33 +67,15 @@ export default {
 
 	methods: {
 		deleteItem() {
-			db.collection('Cart').doc(this.item.id).delete()
+			this.removeProductMethod(this.item)
 		},
 
 		increaseQuantity() {
-			let increase = (this.item.quantity += 1)
-			db.collection('Cart')
-				.doc(this.item.id)
-				.update({
-					quantity: increase,
-				})
-				.catch(error => {
-					console.log('Error adding quantity', error)
-					alert('Not working :(')
-				})
+			this.item.quantity += 1
 		},
 
 		decreaseQuantity() {
-			let decrease = (this.item.quantity -= 1)
-			db.collection('Cart')
-				.doc(this.item.id)
-				.update({
-					quantity: decrease,
-				})
-				.catch(error => {
-					console.log('Error decreasing quantity', error)
-					alert('Not working :(')
-				})
+			this.item.quantity -= 1
 		},
 	},
 }

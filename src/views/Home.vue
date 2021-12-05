@@ -1,6 +1,6 @@
 <template>
 	<v-container class="view">
-		<!-- <h1>Home Page</h1> -->
+		<h1>Home Page</h1>
 		<flavor-of-the-week></flavor-of-the-week>
 		<features-comp></features-comp>
 		<discount></discount>
@@ -25,11 +25,9 @@ export default {
 		Discount,
 	},
 
-	// props: {
-	// 	votes: {
-	// 		type: Array,
-	// 	},
-	// },
+	props: {
+		cartList: Array,
+	},
 
 	// data() {
 	// 	return {

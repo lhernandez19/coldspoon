@@ -2,7 +2,12 @@
 	<v-app>
 		<v-main class="grey lighten-4">
 			<nav-bar :auth-user="authUser"></nav-bar>
-			<router-view :auth-user="authUser" :cartList="cartList" v-bind:add-product-method="addProduct" />
+			<router-view
+				:auth-user="authUser"
+				:cart-list="cartList"
+				:add-product-method="addProduct"
+				:remove-product-method="removeProduct"
+			/>
 			<footer-comp></footer-comp>
 		</v-main>
 	</v-app>
@@ -20,10 +25,7 @@ export default {
 	data() {
 		return {
 			authUser: { uid: '' },
-			cartList: [
-				{name: 'test', price: '9'},
-				{name: 'test', price: '9'}
-			],
+			cartList: [],
 		}
 	},
 
@@ -35,6 +37,10 @@ export default {
 	methods: {
 		addProduct(newProduct) {
 			this.cartList.push(newProduct)
+		},
+
+		removeProduct(item) {
+			this.cartList.splice(this.cartList.indexOf(item), 1)
 		},
 	},
 

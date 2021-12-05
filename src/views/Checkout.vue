@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<checkout-comp :cartList="cartList"></checkout-comp>
+		<checkout-comp :cartList="cartList" :remove-product-method="removeProductMethod"></checkout-comp>
 	</v-container>
 </template>
 
@@ -15,6 +15,7 @@ export default {
 
 	props: {
 		cartList: Array,
+		removeProductMethod: Function,
 	},
 
 	data() {
