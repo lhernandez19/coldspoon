@@ -42,6 +42,12 @@ export default {
 		removeProduct(item) {
 			this.cartList.splice(this.cartList.indexOf(item), 1)
 		},
+
+		loginWithGoogle(){
+			let provider = new auth.GoogleAuthProvider();
+
+			auth().signInWithPopup(provider)
+		},
 	},
 
 	created() {

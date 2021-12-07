@@ -1,6 +1,5 @@
 <template>
-	<div>
-
+	<div v-if="this.authUser && this.authUser.email == 'test@email.com'">
 		<add-products></add-products>
 		<inventory-table></inventory-table>
 	</div>
@@ -15,6 +14,9 @@ export default {
 	components: {
 		AddProducts,
 		InventoryTable,
+	},
+	props: {
+		authUser: Object,
 	},
 
 	data() {
