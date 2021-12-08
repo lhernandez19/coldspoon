@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CheckoutComp from '../components/CheckoutComp.vue'
+import CheckoutComp from '../components/CheckoutList.vue'
 
 export default {
 	name: 'Checkout',

@@ -1,27 +1,23 @@
 <template>
-	<div class="view">
+	<div>
 		<v-container>
-			<div v-if="authUser.uid">Welcome {{ authUser.email }}</div>
-			<login-comp></login-comp>
+			<template v-if="authUser.uid">Welcome {{ authUser.email }}</template>
+			<login-form></login-form>
 		</v-container>
 	</div>
 </template>
 
 <script>
-import LoginComp from '@/components/LoginComp.vue'
+import LoginForm from '@/components/LoginForm.vue'
 export default {
 	name: 'Login',
 	props: {
 		authUser: Object,
 	},
 	components: {
-		LoginComp,
+		LoginForm,
 	},
 }
 </script>
 
-<style scoped>
-.view {
-	min-height: 75vh;
-}
-</style>
+<style scoped></style>

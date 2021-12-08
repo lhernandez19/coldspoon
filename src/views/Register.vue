@@ -1,24 +1,20 @@
 <template>
-	<div class="view">
+	<div>
 		<v-container>
-			<register-comp></register-comp>
+			<register-form></register-form>
 		</v-container>
 	</div>
 </template>
 
 <script>
-import RegisterComp from '@/components/RegisterComp.vue'
+import RegisterForm from '@/components/RegisterForm.vue'
 export default {
 	name: 'Register',
 
 	components: {
-		RegisterComp,
+		RegisterForm,
 	},
 }
 </script>
 
-<style scoped>
-.view {
-	min-height: 75vh;
-}
-</style>
+<style scoped></style>

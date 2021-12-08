@@ -14,15 +14,17 @@
 			<p>Sales taxes</p>
 			<h3>Total</h3>
 		</v-list>
+		
+
 	</v-container>
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
+// import { db } from '../firebase/firebase.js' 
 import CheckoutItem from './CheckoutItem.vue'
 
 export default {
-	name: 'Checkoutcomp',
+	name: 'CheckoutList',
 
 	components: { CheckoutItem },
 
@@ -35,9 +37,9 @@ export default {
 		removeProductMethod: Function,
 	},
 
-	firestore: {
-		products: db.collection('Cart'),
-	},
+	// firestore: {
+	// 	products: db.collection('Cart'),
+	// },
 
 	methods: {},
 }

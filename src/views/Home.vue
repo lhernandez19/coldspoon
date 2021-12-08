@@ -1,5 +1,5 @@
 <template>
-	<v-container class="view">
+	<v-container>
 		<h1>Home Page</h1>
 		<flavor-of-the-week></flavor-of-the-week>
 		<features-comp></features-comp>
@@ -10,9 +10,9 @@
 
 <script>
 import FlavorOfTheWeek from '@/components/FlavorOfTheWeek.vue'
-import Vote from '../components/Vote.vue'
+import Vote from '../components/VoteList.vue'
 // import { db } from '../firebase/firebase.js'
-import FeaturesComp from '../components/FeaturesComp.vue'
+import FeaturesComp from '../components/Features.vue'
 import Discount from '../components/Discount.vue'
 
 export default {
@@ -42,7 +42,5 @@ export default {
 </script>
 
 <style scoped>
-.view {
-	min-height: 80vh;
-}
+
 </style>

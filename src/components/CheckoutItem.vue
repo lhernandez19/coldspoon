@@ -1,6 +1,6 @@
 <template>
 	<v-list two-line>
-		<v-list-item-group  active-class="pink--text" multiple>
+		<v-list-item-group active-class="pink--text" multiple>
 			<v-list-item>
 				<v-item-avatar>
 					<v-img :src="item.image" width="50"></v-img>
@@ -36,8 +36,9 @@
 				</v-list-item-action>
 
 				<v-list-item-action>
-					{{ item.price }}
+					{{ item.price * item.quantity }}
 				</v-list-item-action>
+
 
 				<v-list-item-action>
 					<v-icon color="red darken-3" @click.prevent="deleteItem">
@@ -50,7 +51,6 @@
 </template>
 
 <script>
-
 export default {
 	name: 'CheckoutItem',
 
@@ -75,7 +75,9 @@ export default {
 		},
 
 		decreaseQuantity() {
-			this.item.quantity -= 1
+			if (this.item.quantity > 1) {
+				this.item.quantity -= 1
+			}
 		},
 	},
 }

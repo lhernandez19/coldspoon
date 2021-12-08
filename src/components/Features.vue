@@ -16,7 +16,7 @@
 
 <script>
 export default {
-	name: 'Featurescomp',
+	name: 'Features',
 
 	data() {
 		return {

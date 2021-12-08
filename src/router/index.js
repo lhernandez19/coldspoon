@@ -6,6 +6,7 @@ import Register from '../views/Register.vue'
 import Checkout from '../views/Checkout.vue'
 import Inventory from '../views/Inventory.vue'
 import Store from '../views/Store.vue'
+import About from '../views/About.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
 		path: '/store',
 		name: 'Store',
 		component: Store,
+	},
+	{
+		path: '/about',
+		name: 'About',
+		component: About,
 	},
 ]
 

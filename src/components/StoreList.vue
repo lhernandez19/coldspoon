@@ -1,7 +1,7 @@
 <template>
 	<v-container class="voteBg">
 		<v-row class="justify-space-around">
-			<product
+			<store-item
 				:item="item"
 				v-for="item in products"
 				:key="item.id"
@@ -9,20 +9,20 @@
 				:cartList="cartList"
 				elevation="2"
 			>
-			</product>
+			</store-item>
 		</v-row>
 	</v-container>
 </template>
 
 <script>
 import { db } from '../firebase/firebase.js'
-import Product from '@/components/Product.vue'
+import StoreItem from '@/components/StoreItem.vue'
 
 export default {
-	name: 'StoreComp',
+	name: 'StoreList',
 
 	components: {
-		Product,
+		StoreItem,
 	},
 
 	data: () => ({

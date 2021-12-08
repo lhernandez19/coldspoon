@@ -3,6 +3,7 @@
 		<v-main class="grey lighten-4">
 			<nav-bar :auth-user="authUser"></nav-bar>
 			<router-view
+				class="view"
 				:auth-user="authUser"
 				:cart-list="cartList"
 				:add-product-method="addProduct"
@@ -36,6 +37,11 @@ export default {
 
 	methods: {
 		addProduct(newProduct) {
+			for (let cartItem of this.cartList) {
+				if (cartItem.name === newProduct.name) {
+					return
+				}
+			}
 			this.cartList.push(newProduct)
 		},
 
@@ -43,9 +49,8 @@ export default {
 			this.cartList.splice(this.cartList.indexOf(item), 1)
 		},
 
-		loginWithGoogle(){
-			let provider = new auth.GoogleAuthProvider();
-
+		loginWithGoogle() {
+			let provider = new auth.GoogleAuthProvider()
 			auth().signInWithPopup(provider)
 		},
 	},
@@ -79,4 +84,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.view {
+	min-height: 75vh;
+}
+</style>

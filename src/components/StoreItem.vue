@@ -1,42 +1,72 @@
 <template>
-  <div class="card m-1" :class="item.isAvailable() ? 'border-success' : 'border-warning'">
-    <div class="card-body">
-      <component :is="typeOfItem" :item="item"></component>
-    </div>
-    <div class="card-footer">
-      <button class="btn btn-secondary" v-if="item.isAvailable()" @click='addToBag(item)'>Add to Bag</button>
-      <button class="btn btn-secondary" v-else @click="item.checkIn()">Check In</button>
-      <button class="btn btn-danger" @click="removeFunction(item)">Remove</button>
-      <!-- <b-button variant="success" @click='addToBag(item)'>Add to Bag</b-button> -->
-    </div>
-  </div>
+	<div>
+		<v-card class="mb-5" outlined max-width="250">
+			<v-img :src="item.image"></v-img>
+			<v-card-title> {{ item.name }}</v-card-title>
+			<v-card-subtitle>{{ item.price }}</v-card-subtitle>
+			<v-card-text>{{ item.description }}</v-card-text>
+			<v-divider class="mx-4"></v-divider>
+			<v-card-actions class="pl-4">
+				<v-btn :disabled="disableAddToCartBtn" @click="addProduct">
+					Add to Cart
+				</v-btn>
+			</v-card-actions>
+		</v-card>
+	</div>
 </template>
 
 <script>
-import Gelato from "@/components/Gelato";
-import Sorbetto from "@/components/Sorbetto";
-
-
 export default {
-  name: "StoreItem",
-  components: {
-    Gelato,
-    Sorbetto,
-  },
-  props: {
-    item: Object, 
-    removeFunction: Function,
-    addToBag: Function,
-  },
+	name: 'StoreItem',
 
-  computed: {
-    typeOfItem(){
-      return this.item.constructor.name;
-    }
-  },
+	props: {
+		item: Object,
+		cartList: Array,
+		addProductMethod: Function,
+	},
+
+	data() {
+		return {
+			disableAddToCartBtn: this.alreadyInCart(),
+		}
+	},
+
+	methods: {
+		//store all the cart items
+		addProduct() {
+			this.addProductMethod(this.item)
+			this.disableAddToCartBtn = true
+		},
+
+		alreadyInCart() {
+			// console.log("begin alreadyInCart");
+			for(let cartItem of this.cartList) {
+				// console.log(cartItem, " ", this.item.name);
+				if(cartItem.name === this.item.name) {
+					// console.log("returning true");
+					return true;
+				}
+			}
+			return false;
+		}
+
+		//attach the cart to a user
+		// updateCart() {
+		// 	db.collection('Cart')
+		// 		.add({
+		// 			name: this.item.name,
+		// 			price: this.item.price,
+		// 		})
+		// 		.catch(error => {
+		// 			console.log('Error adding recipe', error)
+		// 			alert('ERROR!')
+		// 		})
+		// 		.finally(() => {
+		// 			this.disableAddToCartBtn = true
+		// 		})
+		// },
+	},
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -6,7 +6,10 @@
 				<side-bar></side-bar>
 			</v-col>
 			<v-col class="9">
-				<store-comp :add-product-method="addProductMethod" :cart-list="cartList"></store-comp>
+				<store-comp
+					:add-product-method="addProductMethod"
+					:cart-list="cartList"
+				></store-comp>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -14,7 +17,7 @@
 
 <script>
 import SideBar from '../components/SideBar.vue'
-import StoreComp from '../components/StoreComp.vue'
+import StoreComp from '../components/StoreList.vue'
 import { db } from '../firebase/firebase.js'
 
 export default {
@@ -23,15 +26,12 @@ export default {
 	components: { StoreComp, SideBar },
 
 	props: {
-		carts: Array,
 		cartList: Array,
-		addProductMethod: Function
+		addProductMethod: Function,
 	},
 
 	data() {
-		return {
-			cart: [],
-		}
+		return {}
 	},
 
 	firestore: {

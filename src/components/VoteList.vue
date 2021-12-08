@@ -1,6 +1,6 @@
 <template>
 	<v-container class="voteBg">
-		<v-row class=" justify-center text-center mx-auto">
+		<v-row class="justify-center text-center mx-auto">
 			<h1>Vote for your favorite flavor</h1>
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
@@ -10,25 +10,25 @@
 			</p>
 		</v-row>
 		<v-row class="justify-space-around">
-			<vote-product
+			<vote-item
 				:item="item"
 				v-for="item in products"
 				:key="item.id"
 				:justify="item"
-			></vote-product>
+			></vote-item>
 		</v-row>
 	</v-container>
 </template>
 
 <script>
 import { db } from '../firebase/firebase.js'
-import VoteProduct from '@/components/VoteProduct.vue'
+import VoteItem from '@/components/VoteItem.vue'
 
 export default {
-	name: 'Vote',
+	name: 'VoteList',
 
 	components: {
-		VoteProduct,
+		VoteItem,
 	},
 
 	data: () => ({
