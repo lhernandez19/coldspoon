@@ -50,21 +50,7 @@ export default {
 			return false;
 		}
 
-		//attach the cart to a user
-		// updateCart() {
-		// 	db.collection('Cart')
-		// 		.add({
-		// 			name: this.item.name,
-		// 			price: this.item.price,
-		// 		})
-		// 		.catch(error => {
-		// 			console.log('Error adding recipe', error)
-		// 			alert('ERROR!')
-		// 		})
-		// 		.finally(() => {
-		// 			this.disableAddToCartBtn = true
-		// 		})
-		// },
+
 	},
 }
 </script>

@@ -16,7 +16,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="item in products" :key="item.name">
+					<tr>
+						<inventory-item
+							v-for="item in products"
+							:key="item.name"
+							:item="item"
+						></inventory-item>
+					</tr>
+					<!-- <tr v-for="item in products" :key="item.name">
 						<td>{{ item.name }}</td>
 						<td>{{ item.description }}</td>
 						<td>{{ item.type }}</td>
@@ -24,12 +31,9 @@
 						<td>{{ item.quantity }}</td>
 						<td>{{ item.price }}</td>
 						<td>
-							<v-icon small class="mr-2" @click="editItem(item)">
-								mdi-pencil
-							</v-icon>
-							<v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+							<v-icon small @click.prevent="deleteItem"> mdi-delete </v-icon>
 						</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</v-simple-table>
 		</v-container>
@@ -37,10 +41,14 @@
 </template>
 
 <script>
+import InventoryItem from '@/components/InventoryItem'
 import { db } from '../firebase/firebase.js'
 
 export default {
 	name: 'Inventorytable',
+	components: {
+		InventoryItem,
+	},
 
 	data() {
 		return {
@@ -54,7 +62,11 @@ export default {
 
 	mounted() {},
 
-	methods: {},
+	methods: {
+		// deleteItem() {
+		// 	db.collection('gelatos').doc(this.item.id).delete()
+		// },
+	},
 }
 </script>
 

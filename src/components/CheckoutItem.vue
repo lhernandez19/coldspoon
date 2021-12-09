@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { db } from "../firebase/firebase.js";
+
 export default {
 	name: 'CheckoutItem',
 
@@ -60,7 +62,13 @@ export default {
 	},
 
 	data() {
-		return {}
+		return {
+			orders:[]
+		}
+	},
+
+	firestore:{
+		orders: db.collection('orders'),
 	},
 
 	mounted() {},
@@ -78,6 +86,19 @@ export default {
 			if (this.item.quantity > 1) {
 				this.item.quantity -= 1
 			}
+		},
+
+		
+		placeOrder() {
+			db.collection('orders')
+				.add()
+				.catch(error => {
+					console.log('Error submitting order', error)
+					alert('ERROR!')
+				})
+				.finally(() => {
+					//todo 
+				})
 		},
 	},
 }

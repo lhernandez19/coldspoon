@@ -37,12 +37,6 @@
 							label="Price"
 							required
 						></v-text-field>
-						<v-file-input
-							v-model="product.image"
-							label="Image"
-							prepend-icon="mdi-file-image-plus-outline"
-							required
-						></v-file-input>
 
 						<v-btn color="primary" class="mr-4" @click.prevent="addProduct">
 							Add Product
@@ -70,7 +64,7 @@ export default {
 				quantity: '',
 				type: '',
 			},
-			productImage: {},
+		
 		}
 	},
 
